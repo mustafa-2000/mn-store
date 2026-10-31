@@ -1,4 +1,6 @@
+
 import "./index.css";
+import API_URL from "./services/api";
 import { useState, useEffect } from "react";
 import { getProducts, getProductById } from "./services/api";
 import storeProducts from "./data/products";
@@ -267,7 +269,7 @@ const handlePlaceOrder = async (customer) => {
       createdAt: new Date().toISOString(),
     };
 
-    const response = await fetch("http://localhost:5000/api/orders", {
+    const response = await fetch(`${API_URL}/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -443,7 +445,7 @@ const handlePlaceOrder = async (customer) => {
            onRegister={async (formData) => {
   try {
     const response = await fetch(
-      "http://localhost:5000/api/auth/register",
+      `${API_URL}/auth/register`,
       {
         method: "POST",
         headers: {

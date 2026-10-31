@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import API_URL from "../../services/api";
 
-const API_URL = "http://localhost:5000/api";
 
 const emptyProduct = {
   name: "",

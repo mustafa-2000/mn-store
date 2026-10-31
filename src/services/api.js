@@ -2,6 +2,7 @@
 const API_URL = import.meta.env.DEV
   ? "http://localhost:5000/api"
   : "/api";
+  export default API_URL;
 
 // Fetch products from the MN Store backend
 export const getProducts = async () => {
