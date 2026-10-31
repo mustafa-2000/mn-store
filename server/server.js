@@ -2,7 +2,9 @@
 const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
-require("dotenv").config();
+require("dotenv").config({
+  path: require("path").join(__dirname, ".env"),
+});
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -82,7 +84,12 @@ pool.on("error", (error) => {
   console.error("Unexpected database pool error:", error.message);
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`MN Store API running at http://localhost:${PORT}`);
-});
+// Start the server locally
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`MN Store API running at http://localhost:${PORT}`);
+  });
+}
+
+// Export Express app for Netlify
+module.exports = app;
